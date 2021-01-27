@@ -1,0 +1,15 @@
+{
+  "name": "haalarimerkkikauppa",
+  "version": "0.0.1",
+  "description": "A fullstack online store for a school course project",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://eta7800-21K-groupH@dev.azure.com/eta7800-21K-groupH/Merkkikauppa/_git/Merkkikauppa"
+  },
+  "author": "Lassi Köykkä, Joonas Vaija, Johannes Tikkanen",
+  "license": "MIT"
+}
