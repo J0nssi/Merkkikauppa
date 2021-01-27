@@ -1,9 +1,12 @@
 {
   "name": "haalarimerkkikauppa",
   "version": "0.0.1",
-  "description": "A fullstack online store for a school course project",
-  "main": "index.js",
+  "description": "A fullstack online store application for a school course project",
+  "main": "server.js",
   "scripts": {
+    "start": "node dist/server.js",
+    "dev": "nodemon dist/server.js",
+    "watch": "tsc -w",
     "test": "mocha"
   },
   "repository": {
@@ -11,5 +14,34 @@
     "url": "https://eta7800-21K-groupH@dev.azure.com/eta7800-21K-groupH/Merkkikauppa/_git/Merkkikauppa"
   },
   "author": "Lassi Köykkä, Joonas Vaija, Johannes Tikkanen",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "@types/bcrypt": "^3.0.0",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.11",
+    "@types/express-flash": "0.0.2",
+    "@types/express-session": "^1.17.3",
+    "@types/method-override": "0.0.31",
+    "@types/node": "^14.14.22",
+    "@types/passport": "^1.0.5",
+    "@types/passport-local": "^1.0.33",
+    "@types/uuid": "^8.3.0",
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.7",
+    "tslint": "^6.1.3",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.1",
+    "method-override": "^3.0.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "uuid": "^8.3.2"
+  }
 }
