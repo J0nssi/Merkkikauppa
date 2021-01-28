@@ -11,7 +11,7 @@
     "sourceMap": true,
     "outDir": "./dist",
     "moduleResolution": "node",
-    "removeComments": true,
+    "removeComments": false,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
@@ -28,12 +28,12 @@
     "baseUrl": "."
   },
   "exclude": [
-    "src/tests",
+    "tests",
     "node_modules",
-    "src/client"
+    "client"
   ],
   "include": [
-    "./src/**/*.tsx",
-    "./src/**/*.ts"
-  ]
+    "app/**/*.tsx",
+    "app/**/*.ts"
+, "server.ts"  ]
 }
