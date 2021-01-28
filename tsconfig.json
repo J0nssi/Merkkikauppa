@@ -28,6 +28,7 @@
     "baseUrl": "."
   },
   "exclude": [
+    "src/tests",
     "node_modules",
     "src/client"
   ],
