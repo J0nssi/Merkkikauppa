@@ -4,10 +4,20 @@
   "description": "A fullstack online store application for a school course project",
   "main": "server.js",
   "scripts": {
-    "start": "node dist/server.js",
-    "dev": "nodemon dist/server.js",
-    "watch": "tsc -w",
-    "test": "mocha"
+    "startServer": "node dist/server.js",
+    "devServer": "nodemon dist/server.js",
+    "watchServer": "tsc -w",
+    "buildServer": "tsc",
+    "testServer": "mocha",
+    "startClient": "cd ./src/client && npm run start",
+    "buildClient": "cd ./src/client && npm run build",
+    "testClient": "cd ./src/client && npm run test",
+    
+    "clean": "rm -rf ./dist",
+    "copyFiles": "cp -R ./src/client/build ./dist",
+
+    "build": "npm run clean && npm run buildServer && npm run buildClient && npm run copyFiles",
+    "dev": "npm run watchServer & npm run devServer"
   },
   "repository": {
     "type": "git",
