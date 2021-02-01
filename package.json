@@ -15,7 +15,8 @@
     "clean": "rm -rf ./dist",
     "build": "npm run clean && npm run buildServer && npm run buildClient",
     "dev": "npm run watchServer & npm run devServer",
-    "test": "npm run testServer"
+    "test": "npm run testServer",
+    "installDependencies": "npm i && cd ./client && npm i"
   },
   "repository": {
     "type": "git",

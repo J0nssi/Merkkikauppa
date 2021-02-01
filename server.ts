@@ -10,7 +10,7 @@ app.get('/*', (req, res) => {
 })
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 let server = app.listen( PORT, () => console.log(`Server started on port ${PORT}`));
 export default server;
