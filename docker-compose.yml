@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  app:
+    container_name: docker-node-mongo
+    image: app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:8080
+    volumes:
+      - .:/usr/src/app
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo:4.4.3-bionic
+    ports:
+      - 27017:27017
+    volumes:
+      - data:/data/db
+volumes:
+  data:
