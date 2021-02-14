@@ -19,7 +19,7 @@ steps:
     npm run installDependencies
     npm run build
     npm run test
-  displayName: 'npm install and build'
+  displayName: 'npm install, build and test'
   env:
     "MONGODB_USER": $(MONGODB_USER)
     "MONGODB_PASSWORD": $(MONGODB_PASSWORD)
@@ -29,10 +29,12 @@ steps:
   inputs:
     command: 'build'
     Dockerfile: '**/Dockerfile'
+  displayName: 'Docker build'
 
 - task: ado-discord-webhook@1
   inputs:
     channelId: '801845696063602688'
     webhookKey: 'kkXqNAjTZ0bp2M87f3ks6FTWX_KKDaXDFSkrB2FX9-8CK8GkCun7QI6NEKfjhT1bk5WO'
     messageType: 'content'
-    content: 'Pipelines build complete'
+    content: 'Pipelines build complete \n Result $(Agent.JobStatus)'
+  displayName: 'Discord Webhook'
