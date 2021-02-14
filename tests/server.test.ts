@@ -10,10 +10,12 @@ const MONGO_DB_URI: string = require('../configuration').default;
 chai.use(chaiHttp);
 
 before(async () => {
-    await mongoose.connect(MONGO_DB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 });
 
 describe('Test database connection', () => {
+    it('It should establish connection to the database', async () => {
+        await mongoose.connect(MONGO_DB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
+    }).timeout(10000)
     it('Mongoose connection readystate should equal 1', () =>{
         assert.equal(mongoose.connection.readyState, 1);
     })
@@ -42,11 +44,11 @@ describe('Server APIs', () =>{
             chai.request(server).get('/listings').then((res) => {
                 assert.equal(res.status, 200);
                 expect(res).to.be.json;
-;
+
             }).catch((err) => {
                 throw err;
             });
         })
-
+        
     })  
 })
