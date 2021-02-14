@@ -36,5 +36,5 @@ steps:
     channelId: '801845696063602688'
     webhookKey: 'kkXqNAjTZ0bp2M87f3ks6FTWX_KKDaXDFSkrB2FX9-8CK8GkCun7QI6NEKfjhT1bk5WO'
     messageType: 'content'
-    content: 'Pipelines build complete \n Result $(Agent.JobStatus)'
+    content: 'Pipelines build complete: Result $(Agent.JobStatus)'
   displayName: 'Discord Webhook'
