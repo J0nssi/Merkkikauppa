@@ -4,11 +4,12 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import bodyparser from 'body-parser';
 
-const PORT = process.env.PORT || 8080;
-const MONGODB_URI = 'mongodb://mongo:27017/appdb';
+const MONGODB_URI: string = require('./configuration').default;
 
-//import routes
-import listingRouter from './routes/listingRouter';
+const PORT = process.env.PORT || 8080;
+
+// Import routes
+import  listingRouter from './routes/listingRouter';
 
 // Connecting to MongoDB
 mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})

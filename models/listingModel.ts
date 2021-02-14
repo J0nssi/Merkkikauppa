@@ -7,7 +7,7 @@ export interface IListing extends Document {
         id: string;
     }
     price: number;
-    url?: string;
+    urls: Array<string>;
 }
 
 const ListingSchema: Schema = new Schema({
@@ -17,7 +17,7 @@ const ListingSchema: Schema = new Schema({
         id: { type: String, required: true, unique: true}
     },
     price: { type: Number, required: true, unique: true},
-    url: { type: String, required: false, unique: true},
+    urls: { type: [String], required: true, unique: true},
 })
 
 export default mongoose.model<IListing>('Listing', ListingSchema);
