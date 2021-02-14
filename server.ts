@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8080;
 import  listingRouter from './routes/listingRouter';
 
 // Connecting to MongoDB
-mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 .then(() => console.log("Database connection established.") )
 .catch(err => console.log(err));
 
