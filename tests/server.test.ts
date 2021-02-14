@@ -27,10 +27,12 @@ describe('Server APIs', () =>{
     })
     describe('Test listings endpoint at /listings', () => {
         it("It should return 200 statuscode and be in JSON format", (done) =>{
-            chai.request(server).get('/listings').end((err, res) => {
+            chai.request(server).get('/listings').then((res) => {
                 assert.equal(res.status, 200);
                 expect(res).to.be.json;
                 done();
+            }).catch((err) => {
+                throw err;
             });
         })
     })  
