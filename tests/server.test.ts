@@ -9,9 +9,6 @@ const MONGO_DB_URI: string = require('../configuration').default;
 //Assertions
 chai.use(chaiHttp);
 
-before(async () => {
-});
-
 describe('Test database connection', () => {
     it('It should establish connection to the database', async () => {
         await mongoose.connect(MONGO_DB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
