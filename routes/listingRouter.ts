@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import listingModel from '../models/listingModel';
+import Listing from '../models/listingModel';
 
 const listingRouter = Router();
 
 listingRouter.route('/').get((req, res) => {
-    listingModel.find((err, listings) =>{
+    Listing.find().populate('seller').exec((err, listings) =>{
         if (err) {
             console.log(err);
         } else {

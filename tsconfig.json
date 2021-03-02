@@ -34,6 +34,7 @@
     "client"
   ],
   "include": [
+    "config.json",
     "**/*.tsx",
     "**/*.ts", 
     "server.ts", "configuration.ts"]
