@@ -3,7 +3,7 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import userModel, { IUser } from './models/userModel';
 import bcrypt from 'bcrypt';
 import { CallbackError } from 'mongoose';
-import { JWT_SECRET } from './config.json'
+import { JWT_SECRET } from './configuration'
 import passportJWT from 'passport-jwt';
 
 const JWTStrategy = passportJWT.Strategy;
