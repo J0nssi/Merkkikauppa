@@ -7,13 +7,15 @@ import cookieParser from 'cookie-parser';
 import passport from './passport-init';
 import printReq from './middleware/printReq'
 
-const PORT = process.env.PORT || 8080;
 import {MONGODB_URI} from './configuration';
+
+import listingRouter from './routes/listingRouter';
+import authRouter from './routes/authRouter'
+
+const PORT = process.env.PORT || 8080;
 
 
 // Import routes
-import listingRouter from './routes/listingRouter';
-import authRouter from './routes/authRouter'
 
 // Connecting to MongoDB
 mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
@@ -30,7 +32,7 @@ app.use(bodyparser.json());
 app.use(printReq);
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join('..', 'build')));
 
 
 // Routing
@@ -38,7 +40,7 @@ app.use('/listings', listingRouter);
 app.use('/auth', authRouter);
 
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(__dirname,'..', 'build', 'index.html'));
 })
 
 

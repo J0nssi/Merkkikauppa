@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { IListing } from '../../models/listingModel'
-import Login from './components/login/login';
-import Registration from './components/registration/registration';
+import { IListing } from '../server/models/listingModel'
+import Login from './components/Login/Login';
+import Registration from './components/Registration/Registration';
 
 function App() {
   const [listings, setListings] = useState<Array<IListing>>([])
@@ -24,7 +24,6 @@ function App() {
   return (
     <Router>
       <Switch>
-       
         <Route path="/kirjaudu">
           <Login />
         </Route>
@@ -45,7 +44,6 @@ function App() {
           })}
         </Route>
       </Switch>
-
     </Router>
   );
 }

@@ -1,7 +1,9 @@
+/* eslint-disable */
+
 import chai, { assert, expect } from 'chai'; 
 import chaiHttp from 'chai-http';
 import { it } from 'mocha';
-import server from '../server'
+import server from '../server';
 import mongoose from 'mongoose';
 
 const MONGO_DB_URI: string = require('../configuration').default;
