@@ -3,7 +3,7 @@ import User, { IUser } from '../models/userModel';
 import passport from '../passport-init'
 import { CallbackError } from 'mongoose';
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '../config.json'
+import { JWT_SECRET } from '../configuration'
 
 const router = Router();
 
