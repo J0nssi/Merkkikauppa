@@ -16,13 +16,14 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm run installDependencies
+    npm run install
     npm run build
   displayName: 'npm install and build'
   env:
     "MONGODB_USER": $(MONGODB_USER)
     "MONGODB_PASSWORD": $(MONGODB_PASSWORD)
     "MONGODB_DB_NAME": $(MONGODB_DB_NAME)
+    "JWT_SECRET": $(JWT_SECRET)
 
 - task: Docker@2
   inputs:
