@@ -5,9 +5,17 @@ import useStyles from './gridstyles';
 import './startpage.css';
 import {Grid} from '@material-ui/core';
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
+import { useHistory } from "react-router-dom";
+
+
+
 
 const Startpage = () => {
   const [listings, setListings] = useState<Array<IListing>>([])
+
+  const history = useHistory();
+  const navigateToSales = () => history.push('/myynti');//navigoi painalluksesta myyntisivulle
+
 
   useEffect(() => {
     const getListings = async () => {
@@ -39,9 +47,10 @@ const Startpage = () => {
                 //CardMedia itse kuva merkille
                 <Grid item key={listing.id} xs={12} sm={6} md={4} lg={3}>
                   <Card className={classes.root}>
-                    <a href="https://www.google.com/">
+                    <a onClick={navigateToSales}>
                     <CardMedia className={classes.media} image={listing.urls[0]} title={listing.title} />
                     </a>
+                    <a onClick={navigateToSales}>
                     <CardContent>
                       <div className={classes.cardContent}>
                         <Typography variant="h5" gutterBottom>
@@ -55,6 +64,7 @@ const Startpage = () => {
                       <Typography variant="body2" color="textSecondary">Merkkejä jäljellä: {listing.item_count}</Typography>
                       <Typography variant="body2" color="textSecondary">{listing.seller.name}</Typography>
                     </CardContent>
+                    </a>
                   </Card>
                 </Grid>
               )

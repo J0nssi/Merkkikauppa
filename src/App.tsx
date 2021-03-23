@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import Startpage from './components/Startpage/Startpage';
 import Menu from './components/Startpage/Menu/Menu'
+import Salepage from './components/Myynti-ilmoitus/Salepage';
 
 function App() {
   const [listings, setListings] = useState<Array<IListing>>([])
@@ -32,9 +33,13 @@ function App() {
         <Route path="/rekisteroidy">
           <Registration />
         </Route>
-        <Route path="/">
+        <Route path="/aloitus">
           <Startpage />
           <Menu/>
+        </Route>
+        <Route path="/myynti">
+          <Salepage />
+          <Menu />
         </Route>
       </Switch>
     </Router>
