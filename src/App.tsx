@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { IListing } from '../server/models/listingModel'
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
+import Startpage from './components/Startpage/Startpage';
+import Menu from './components/Startpage/Menu/Menu'
 
 function App() {
   const [listings, setListings] = useState<Array<IListing>>([])
@@ -31,17 +33,8 @@ function App() {
           <Registration />
         </Route>
         <Route path="/">
-          {listings.map(listing => {
-            return (
-              <div style={{ width: "min-content", margin: "auto" }}>
-                {listing.urls.map(url => { return <img src={url} alt="" /> })}
-                <h3>
-                  {listing.title} <br /> {listing.price} €
-            </h3>
-                <h4>{listing.seller.name}</h4>
-              </div>
-            )
-          })}
+          <Startpage />
+          <Menu/>
         </Route>
       </Switch>
     </Router>
