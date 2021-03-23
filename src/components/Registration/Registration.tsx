@@ -1,10 +1,15 @@
 import axios from "axios";
 import { ChangeEvent, MouseEvent, useState } from "react";
+import { useHistory } from "react-router";
+
 
 axios.defaults.withCredentials = true;
 
 
 const Registration = () => {
+
+    const history = useHistory();
+
     const [state, setState] = useState({
         email: "",
         password: "",
@@ -35,7 +40,10 @@ const Registration = () => {
         axios.post('/auth/register', payload).then(async (response) => {
             console.log(response.data)
             if (response.status === 200) {
-                console.log("REGISTER SUCCESSFUL");   
+                console.log("REGISTER SUCCESSFUL");
+                history.push('/kirjaudu')
+            }else {
+                alert("Rekisteröityminen epäonnistui.")
             }
         })
     }

@@ -1,6 +1,9 @@
 import { Schema, Document, model } from 'mongoose';
 import { IListing } from './listingModel';
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken';
+import { JWT_SECRET, REFRESH_SECRET } from '../configuration'
+import refreshTokenModel from './refreshTokenModel';
 
 export interface IUser extends Document {
     name: string;
@@ -11,6 +14,8 @@ export interface IUser extends Document {
     listings: Array<IListing>;
     checkPassword(inputPassword: string): boolean;
     hashPassword(plainTextPassword: string): string;
+    createAccessToken(): string;
+    createRefreshToken(): string;
 }
 
 const UserSchema = new Schema<IUser>({
@@ -29,7 +34,34 @@ UserSchema.methods = {
 	},
 	hashPassword: (plainTextPassword: string): string => {
 		return bcrypt.hashSync(plainTextPassword, 10)
-	}
+	},
+    createAccessToken: async function(){
+        try {
+            const userForToken = {
+                id: this._id,
+                email: this.email
+            }
+            return jwt.sign(userForToken, JWT_SECRET, { expiresIn: "15m" })
+
+        } catch (error) {
+            console.error(error);
+            return;
+        }
+    },
+    createRefreshToken: async function(){
+        try {
+            const userForToken = {
+                id: this._id,
+                email: this.email
+            }
+            let refreshToken = jwt.sign(userForToken, REFRESH_SECRET, { expiresIn: "1d" })
+            await new refreshTokenModel({ refreshToken: refreshToken}).save();
+            return refreshToken;
+        } catch (error) {
+            console.error(error);
+            return;
+        }
+    }
 }
 
 UserSchema.pre('save', function(next) {

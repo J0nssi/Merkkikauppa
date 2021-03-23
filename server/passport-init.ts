@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 import { CallbackError } from 'mongoose';
 import { JWT_SECRET } from './configuration'
 import passportJWT from 'passport-jwt';
+import extractJwt from './middleware/extractJwt';
 
 const JWTStrategy = passportJWT.Strategy;
 
@@ -18,6 +19,7 @@ const initialize = (passport: PassportStatic) => {
         console.log('---------');
         done(null, { _id: user._id });
     })
+
     //Deserialize user
     passport.deserializeUser((id: string, done) => {
         console.log('Deserialize ... called')
@@ -59,17 +61,14 @@ const initialize = (passport: PassportStatic) => {
 
     }));
 
-    passport.use(new JWTStrategy({
-        jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: JWT_SECRET
-      }, 
-      (jwt_payload, done) => {
-         userModel.findOne({_id: jwt_payload.user._id}).exec((err: CallbackError, userMatch: IUser | null) => {
-             if(userMatch && userMatch.id === jwt_payload.user._id){
+    passport.use(new JWTStrategy({ jwtFromRequest: extractJwt, secretOrKey: JWT_SECRET}, (jwt_payload, done) => {
+         userModel.findOne({_id: jwt_payload.id}).exec((err: CallbackError, userMatch: IUser | null) => {
+             if(userMatch && userMatch.id === jwt_payload.id){
                return done(null, userMatch)
              } else {
                return done(null, false, {
-                 message: "Token not matched"
+                    success: false,
+                    message: "Token not matched"
                })
              }          
          })

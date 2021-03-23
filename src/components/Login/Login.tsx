@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ChangeEvent, MouseEvent, useState } from "react";
+import { useHistory } from "react-router";
 
 axios.defaults.withCredentials = true;
 
@@ -9,6 +10,7 @@ const Login = () => {
         password: ""
     })
 
+    const history = useHistory();
 
     // Logintietojen tallennus tilaan
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +31,22 @@ const Login = () => {
         axios.post('/auth/login', payload).then((response) => {
             if (response.status === 200) {
                 console.log("LOGIN SUCCESSFUL");
+
+                axios.get('/auth/refresh-token').then(refreshResponse => {
+                    console.log(refreshResponse.data)
+                }).catch((error) => console.log("error occured"))
+
+                axios.get('/auth/is-logged-in').then((userRes) =>{
+                    console.log(userRes.data);
+                    history.push('/');
+                }).catch((error) => {
+                    console.log(error)
+                })
+            }
+        }).catch(({response}) => {
+            if(response.status === 400) {
+                console.log("LOGIN FAILED");
+                alert("Kirjautuminen epäonnistui.")
             }
         })
     }
