@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
+<<<<<<< HEAD
 import Startpage from './components/Startpage/Startpage';
 import Menu from './components/Startpage/Menu/Menu'
 import Salepage from './components/Myynti-ilmoitus/Salepage';
@@ -40,6 +41,20 @@ function App() {
         </Route>
       </Switch>
     </Router>
+=======
+import Profilepage from './components/Profilepage/Profilepage';
+
+function App() {
+
+
+
+  return (
+    <>
+      <Profilepage></Profilepage>
+      <Registration></Registration>
+      <Login></Login>
+    </>
+>>>>>>> 3bdd2b1d4bf06c45a75ef1265c87920686cffd99
   );
 }
 
