@@ -6,8 +6,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -17,38 +15,38 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="">
-        Merkkikauppa
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="">
+                Merkkikauppa
       </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
 }
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-      marginTop: theme.spacing(8),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
     },
     avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main,
     },
     form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(1),
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
     },
     submit: {
-      margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(3, 0, 2),
     },
-  }));
-  
+}));
+
 
 axios.defaults.withCredentials = true;
 
@@ -63,7 +61,7 @@ const Login = () => {
 
     // Logintietojen tallennus tilaan
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const  {id, value } = e.target;
+        const { id, value } = e.target;
         setState((prevState) => ({
             ...prevState,
             [id]: value
@@ -73,7 +71,7 @@ const Login = () => {
     // Logintietojen lähetys backendiin
     const handleSubmitClick = (e: MouseEvent) => {
         e.preventDefault();
-        const payload =  {
+        const payload = {
             "email": state.email,
             "password": state.password,
         }
@@ -85,15 +83,15 @@ const Login = () => {
                     console.log(refreshResponse.data)
                 }).catch((error) => console.log("error occured"))
 
-                axios.get('/auth/is-logged-in').then((userRes) =>{
+                axios.get('/auth/is-logged-in').then((userRes) => {
                     console.log(userRes.data);
                     history.push('/');
                 }).catch((error) => {
                     console.log(error)
                 })
             }
-        }).catch(({response}) => {
-            if(response.status === 400) {
+        }).catch(({ response }) => {
+            if (response.status === 400) {
                 console.log("LOGIN FAILED");
                 alert("Kirjautuminen epäonnistui.")
             }
@@ -101,14 +99,8 @@ const Login = () => {
     }
 
 
-    return(
+    return (
         <>
-            <h1>Kirjaudu sisään</h1>
-            <form>
-                <input type="email" name="email" id="email" placeholder="Sähköposti" onChange={handleChange} required/>
-                <input type="password" name="password" id="password" placeholder="Salasana" onChange={handleChange} required/>
-                <button type="submit" onClick={handleSubmitClick}>Kirjaudu</button>
-            </form>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>

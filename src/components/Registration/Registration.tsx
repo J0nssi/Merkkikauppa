@@ -6,8 +6,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -98,15 +96,6 @@ const Registration = () => {
 
     return (
         <>
-            <h1>Rekisteröidy</h1>
-            <form>
-                <input type="email" name="email" id="email" placeholder="Sähköposti" onChange={handleChange} required />
-                <input type="password" name="password" id="password" placeholder="Salasana" onChange={handleChange} required />
-                <input type="name" name="name" id="name" placeholder="Nimi" onChange={handleChange} required />
-                <input type="phone_number" name="phone_number" id="phone_number" onChange={handleChange} placeholder="Puhelinnumero" required />
-                <input type="city" name="city" id="city" placeholder="Kaupunki" onChange={handleChange} required />
-                <button type="submit" onClick={handleSubmitClick}>Luo käyttäjä</button>
-            </form>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
