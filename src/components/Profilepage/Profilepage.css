@@ -1,0 +1,12 @@
+
+#profiili img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;;
+    justify-content: center;
+}
+
+#profiili{
+    text-align: center;
+    padding-top: 10px;
+}
