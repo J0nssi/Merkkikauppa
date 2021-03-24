@@ -24,10 +24,6 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/">
-          <Startpage />
-          <Menu/>
-        </Route>
         <Route path="/kirjaudu">
           <Login />
         </Route>
@@ -37,6 +33,10 @@ function App() {
         <Route path="/myynti">
           <Salepage />
           <Menu />
+        </Route>
+        <Route path="/">
+          <Startpage />
+          <Menu/>
         </Route>
       </Switch>
     </Router>

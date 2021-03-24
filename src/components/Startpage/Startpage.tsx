@@ -48,10 +48,10 @@ const Startpage = () => {
                 //CardMedia itse kuva merkille
                 <Grid item key={listing.id} xs={12} sm={6} md={4} lg={3}>
                   <Card className={classes.root}>
-                    <a onClick={navigateToSales} href="/#">
+                    <a onClick={navigateToSales}>
                     <CardMedia className={classes.media} image={listing.urls[0]} title={listing.title} />
                     </a>
-                    <a onClick={navigateToSales} href="/#">
+                    <a onClick={navigateToSales}>
                     <CardContent>
                       <div className={classes.cardContent}>
                         <Typography variant="h5" gutterBottom>
