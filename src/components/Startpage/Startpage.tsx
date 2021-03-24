@@ -6,6 +6,7 @@ import './startpage.css';
 import {Grid} from '@material-ui/core';
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
+import Container from '@material-ui/core/Container';
 
 
 
@@ -71,6 +72,16 @@ const Startpage = () => {
             })}
           </Grid>
         </main>
+        <footer className={classes.footer}>
+          <Container maxWidth="lg">
+            <Typography variant="h6" align="center" gutterBottom>
+              Merkkikauppa
+            </Typography>
+            <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+              Köykkä, Vaija, Tikkanen
+            </Typography>
+          </Container>
+        </footer>
       </>
     );
 }

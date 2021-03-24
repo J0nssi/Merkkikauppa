@@ -6,14 +6,11 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
+
 
 
 const Salepage = () => {
@@ -62,7 +59,6 @@ const Salepage = () => {
           },
         },
       }));
-
     const tiers = [
         {
           title: 'MERKKINIMI PLACEHOLDER',
@@ -128,6 +124,16 @@ const Salepage = () => {
                         ))}
                     </Grid>
                 </Container>
+                <footer className={classes.footer}>
+                  <Container maxWidth="lg">
+                    <Typography variant="h6" align="center" gutterBottom>
+                      Merkkikauppa
+                    </Typography>
+                    <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+                      Köykkä, Vaija, Tikkanen
+                    </Typography>
+                  </Container>
+                </footer>
             </main>
         </>
         )

@@ -15,5 +15,8 @@ export default makeStyles(() => ({
     cardContent: {
         display: 'flex',
         justifyContent: 'space-between'
+    },
+    footer: {
+        paddingTop: '70%',
     }
 }));
