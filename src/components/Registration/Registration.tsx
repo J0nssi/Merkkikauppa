@@ -1,8 +1,6 @@
 import axios from "axios";
 import { ChangeEvent, MouseEvent, useState } from "react";
-<<<<<<< HEAD
 import { useHistory } from "react-router";
-=======
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -18,7 +16,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
->>>>>>> 3bdd2b1d4bf06c45a75ef1265c87920686cffd99
 
 
 axios.defaults.withCredentials = true;
@@ -57,13 +54,10 @@ function Copyright() {
   }));
 
 const Registration = () => {
-<<<<<<< HEAD
 
     const history = useHistory();
 
-=======
     const classes = useStyles();
->>>>>>> 3bdd2b1d4bf06c45a75ef1265c87920686cffd99
     const [state, setState] = useState({
         email: "",
         password: "",
