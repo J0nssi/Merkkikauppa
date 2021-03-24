@@ -1,7 +1,4 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { IListing } from '../server/models/listingModel'
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import Startpage from './components/Startpage/Startpage';
@@ -9,33 +6,33 @@ import Menu from './components/Startpage/Menu/Menu'
 import Salepage from './components/Myynti-ilmoitus/Salepage';
 
 function App() {
-  const [listings, setListings] = useState<Array<IListing>>([])
+  // const [listings, setListings] = useState<Array<IListing>>([])
 
-  useEffect(() => {
-    const getListings = async () => {
-      return await axios.get(`/listings`)
-        .then(response => {
-          console.log(response.data)
-          setListings(response.data);
-        })
-        .catch(err => console.log(err));
-    }
+  // useEffect(() => {
+  //   const getListings = async () => {
+  //     return await axios.get(`/listings`)
+  //       .then(response => {
+  //         console.log(response.data)
+  //         setListings(response.data);
+  //       })
+  //       .catch(err => console.log(err));
+  //   }
 
-    getListings();
-  }, [])
+  //   getListings();
+  // }, [])
 
   return (
     <Router>
       <Switch>
+        <Route path="/">
+          <Startpage />
+          <Menu/>
+        </Route>
         <Route path="/kirjaudu">
           <Login />
         </Route>
         <Route path="/rekisteroidy">
           <Registration />
-        </Route>
-        <Route path="/aloitus">
-          <Startpage />
-          <Menu/>
         </Route>
         <Route path="/myynti">
           <Salepage />

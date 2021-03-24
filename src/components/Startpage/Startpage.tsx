@@ -4,7 +4,7 @@ import { IListing } from '../../../server/models/listingModel';
 import useStyles from './gridstyles';
 import './startpage.css';
 import {Grid} from '@material-ui/core';
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
+import { Card, CardMedia, CardContent, Typography } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 import Container from '@material-ui/core/Container';
 
@@ -48,10 +48,10 @@ const Startpage = () => {
                 //CardMedia itse kuva merkille
                 <Grid item key={listing.id} xs={12} sm={6} md={4} lg={3}>
                   <Card className={classes.root}>
-                    <a onClick={navigateToSales}>
+                    <a onClick={navigateToSales} href="/#">
                     <CardMedia className={classes.media} image={listing.urls[0]} title={listing.title} />
                     </a>
-                    <a onClick={navigateToSales}>
+                    <a onClick={navigateToSales} href="/#">
                     <CardContent>
                       <div className={classes.cardContent}>
                         <Typography variant="h5" gutterBottom>
