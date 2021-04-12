@@ -20,36 +20,36 @@ axios.defaults.withCredentials = true;
 
 function Copyright() {
     return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="">
-          Merkkikauppa
+        <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="">
+                Merkkikauppa
         </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
     );
-  }
+}
 
-  const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
     paper: {
-      marginTop: theme.spacing(8),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
     },
     avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main,
     },
     form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(3),
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(3),
     },
     submit: {
-      margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(3, 0, 2),
     },
-  }));
+}));
 
 const Registration = () => {
 
@@ -76,7 +76,7 @@ const Registration = () => {
     // Luo käyttäjä napin painaminen
     const handleSubmitClick = (e: MouseEvent) => {
         e.preventDefault();
-        const payload =  {
+        const payload = {
             "email": state.email,
             "password": state.password,
             "name": state.name,
@@ -88,7 +88,7 @@ const Registration = () => {
             if (response.status === 200) {
                 console.log("REGISTER SUCCESSFUL");
                 history.push('/kirjaudu')
-            }else {
+            } else {
                 alert("Rekisteröityminen epäonnistui.")
             }
         })

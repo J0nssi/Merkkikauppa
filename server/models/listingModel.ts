@@ -4,7 +4,7 @@ import { IUser } from './userModel';
 export interface IListing extends Document {
     title: string;
     description: string;
-    seller: IUser;
+    seller: IUser | string;
     price: number;
     item_count: number;
     urls: Array<string>;

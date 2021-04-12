@@ -9,7 +9,9 @@ import printReq from './middleware/printReq'
 
 import {MONGODB_URI} from './configuration';
 
+import listingsRouter from './routes/listingsRouter';
 import listingRouter from './routes/listingRouter';
+
 import authRouter from './routes/authRouter'
 
 const PORT = process.env.PORT || 8080;
@@ -36,7 +38,9 @@ app.use(express.static(path.join('..', 'build')));
 
 
 // Routing
-app.use('/listings', listingRouter);
+app.use('/listings', listingsRouter);
+app.use('/listing', listingRouter);
+
 app.use('/auth', authRouter);
 
 app.get('/*', (req, res) => {
