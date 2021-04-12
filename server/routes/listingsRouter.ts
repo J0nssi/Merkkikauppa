@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import passport from 'passport';
 import { IUser } from '../models/userModel';
-import { CallbackError } from 'mongoose';
+import { CallbackError} from 'mongoose';
 import Listing from '../models/listingModel';
 
 const listingsRouter = Router();
@@ -17,7 +17,7 @@ listingsRouter.route('/').get((req, res) => {
 })
 
 listingsRouter.route('/u/:userId').get((req, res) => {
-    Listing.find({seller: req.params.userId}).populate('seller').exec((err, listings) =>{
+    Listing.find({seller: req.params.userId as any}).populate('seller').exec((err, listings) =>{
         if (err) {
             console.log(err);
         } else {
