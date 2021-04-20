@@ -10,7 +10,7 @@ listingRouter.route('/').get((req, res) => {
 });
 
 listingRouter.route('/:listingID').get((req, res) => {
-    Listing.findById(req.params.listingID).then(listing => {
+    Listing.findById(req.params.listingID).populate('seller').then(listing => {
         return res.status(200).json(listing);
     }).catch(() => {
         return res.status(401).json({message: "Listing not found."})

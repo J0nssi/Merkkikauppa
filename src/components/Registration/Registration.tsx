@@ -13,6 +13,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { CLIENT_RENEG_LIMIT } from "node:tls";
+import { createGlobalStyle } from "styled-components";
 
 
 
@@ -93,9 +95,18 @@ const Registration = () => {
             }
         })
     }
+    const navigateToMain = () => {
+        history.push('/');//navigoi painalluksesta etsivulle
+      }
 
     return (
         <>
+            <div className="top">
+                <a onClick={() => navigateToMain()} style={{ cursor: 'pointer' }}>
+                    <h1>MERKKIKAUPPA</h1>
+                </a>
+                <img src='/MerkkikauppaW.png' alt="MK" width="100px" height="100px"></img>
+            </div><br /><br />
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { IListing } from '../../../server/models/listingModel';
 import useStyles from './gridstyles';
 import './startpage.css';
@@ -7,15 +7,24 @@ import {Grid} from '@material-ui/core';
 import { Card, CardMedia, CardContent, Typography } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 import Container from '@material-ui/core/Container';
+import {userContext} from '../../userContext';
+import { IUser } from '../../../server/models/userModel';
 
 
 
 
 const Startpage = () => {
   const [listings, setListings] = useState<Array<IListing>>([])
+  
 
   const history = useHistory();
-  const navigateToSales = () => history.push('/myynti');//navigoi painalluksesta myyntisivulle
+  const navigateToSales = (listingID:any) => {
+    history.push('/myynti/'+listingID);//navigoi painalluksesta myyntisivulle
+  }
+
+  const navigateToMain = () => {
+    history.push('/');//navigoi painalluksesta etsivulle
+  }
 
 
   useEffect(() => {
@@ -31,13 +40,17 @@ const Startpage = () => {
     getListings();
   }, [])
 
-    //Gridiin stylingit styles.js tiedostosta
-    const classes = useStyles();
-
+  //Gridiin stylingit styles.js tiedostosta
+  const classes = useStyles();
+  const user: IUser | undefined = useContext(userContext);
     return (
       <>
-      <div className="top">     
-      <h1>MERKKIKAUPPA</h1>       
+      <div className="top">
+      <a onClick={() => navigateToMain()} style={{cursor:'pointer'}}>
+      {user && 
+      <h1>kirjautunut</h1>
+      }
+      </a>       
       <img src='/MerkkikauppaW.png' alt="MK" width="100px" height="100px"></img>
       </div><br/><br/>
         <main>
@@ -48,7 +61,7 @@ const Startpage = () => {
                 //CardMedia itse kuva merkille
                 <Grid item key={listing.id} xs={12} sm={6} md={4} lg={3}>
                   <Card className={classes.root}>
-                    <a onClick={navigateToSales}>
+                    <a onClick={() => navigateToSales(listing._id)}>
                     <CardMedia className={classes.media} image={listing.urls[0]} title={listing.title} />
                     </a>
                     <a onClick={navigateToSales}>

@@ -99,8 +99,19 @@ const Login = () => {
     }
 
 
+    const navigateToMain = () => {
+        history.push('/');//navigoi painalluksesta etsivulle
+      }
+
     return (
         <>
+            <div className="top">
+                <a onClick={() => navigateToMain()} style={{ cursor: 'pointer' }}>
+                    <h1>MERKKIKAUPPA</h1>
+                </a>
+                <img src='/MerkkikauppaW.png' alt="MK" width="100px" height="100px"></img>
+            </div><br /><br />
+            
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
