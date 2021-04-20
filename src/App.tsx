@@ -33,12 +33,12 @@ function App() {
           <Registration />
           <Menu />
         </Route>
+        <Route path="/myynti/lisaa">
+          <AddListing />
+        </Route>
         <Route path="/myynti/:listingid">
           <Salepage />
           <Menu />
-        </Route>
-        <Route path="/myynti/lisaa">
-          <AddListing />
         </Route>
         <userContext.Provider value={user}>
           <Route path="/">
