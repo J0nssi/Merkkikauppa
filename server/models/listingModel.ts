@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { IUser } from './userModel';
+import User, { IUser } from './userModel';
 
 export interface IListing extends Document {
     title: string;
@@ -11,7 +11,7 @@ export interface IListing extends Document {
     date_created: Date;
 }
 
-const ListingSchema: Schema = new Schema({
+const ListingSchema = new Schema<IListing>({
     title: { type: String, required: true},
     description: { type: String, required: true},
     seller: { type: Schema.Types.ObjectId, ref: 'User', required: true},
@@ -21,4 +21,10 @@ const ListingSchema: Schema = new Schema({
     date_created: { type: Date, required: true}
 })
 
-export default mongoose.model<IListing>('Listing', ListingSchema);
+ListingSchema.pre('save', function(next) {
+    
+    User.updateOne({_id: this.seller._id}, {$push: {listings: this._id}})
+    next();
+})
+
+export default mongoose.model<IListing & Document>('Listing', ListingSchema);
