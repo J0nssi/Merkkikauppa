@@ -4,6 +4,7 @@ import Registration from './components/Registration/Registration';
 import Startpage from './components/Startpage/Startpage';
 import Menu from './components/Startpage/Menu/Menu'
 import Salepage from './components/Myynti-ilmoitus/Salepage';
+import AddListing from './components/AddListing/AddListing';
 
 function App() {
   // const [listings, setListings] = useState<Array<IListing>>([])
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route path="/rekisteroidy">
           <Registration />
+        </Route>
+        <Route path="/myynti/lisaa">
+          <AddListing />
         </Route>
         <Route path="/myynti">
           <Salepage />
