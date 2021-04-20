@@ -8,6 +8,7 @@ import { userContext } from './userContext';
 import { useState, useEffect } from 'react';
 import { IUser } from '../server/models/userModel';
 import axios from 'axios';
+import AddListing from './components/AddListing/AddListing';
 
 function App() {
   const [user, setUser] = useState<IUser>()
@@ -35,6 +36,9 @@ function App() {
         <Route path="/myynti/:listingid">
           <Salepage />
           <Menu />
+        </Route>
+        <Route path="/myynti/lisaa">
+          <AddListing />
         </Route>
         <userContext.Provider value={user}>
           <Route path="/">
