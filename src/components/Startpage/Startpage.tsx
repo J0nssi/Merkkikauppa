@@ -8,7 +8,6 @@ import { Card, CardMedia, CardContent, Typography } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 import Container from '@material-ui/core/Container';
 import { userContext } from '../../userContext';
-import { IUser } from '../../../server/models/userModel';
 
 
 
@@ -19,14 +18,6 @@ const Startpage = () => {
 
 
   const history = useHistory();
-  const navigateToSales = (listingID: any) => {
-    history.push('/myynti/' + listingID);//navigoi painalluksesta myyntisivulle
-  }
-
-  const navigateToMain = () => {
-    history.push('/');//navigoi painalluksesta etsivulle
-  }
-
 
   useEffect(() => {
     axios.get(`/listings`)
@@ -36,6 +27,14 @@ const Startpage = () => {
       })
       .catch(err => console.log(err));
   }, [])
+
+  const navigateToSales = (listingID: any) => {
+    history.push('/myynti/' + listingID);//navigoi painalluksesta myyntisivulle
+  }
+
+  const navigateToMain = () => {
+    history.push('/');//navigoi painalluksesta etsivulle
+  }
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -63,18 +62,20 @@ const Startpage = () => {
 
   //Gridiin stylingit styles.js tiedostosta
   const classes = useStyles();
-  const user: IUser | undefined = useContext(userContext);
+
+  let {user, setUser} = useContext(userContext);
+  
   return (
     <>
-      <div className="top">
-        <a onClick={() => navigateToMain()} style={{ cursor: 'pointer' }}>
-          {user &&
-            <h1>kirjautunut</h1>
-          }
+      <div className="top" style={{justifyContent: "space-between"}}>
+        <div></div>
+        <a onClick={() => navigateToMain()} style={{ cursor: 'pointer', display: "flex"}}>
+          <h1>MERKKIKAUPPA</h1>
+          <img src='/MerkkikauppaW.png' alt="MK" width="100px" height="100px"></img>
         </a>
-        <img src='/MerkkikauppaW.png' alt="MK" width="100px" height="100px"></img>
-        <div style={{marginTop: "auto", marginBottom: "auto", width: "auto"}}>
-            <input placeholder="Hae merkkejä" type="text" onChange={handleSearchChange} />
+        <div style={{marginTop: "auto",marginBottom: "1.7rem", marginRight: "1rem"}}>
+            {user && (<span>Kirjautunut:<br/> {user.name}<br/></span>)}
+            <input placeholder="Hae merkkejä" type="text" onChange={handleSearchChange}/>
             <button type="submit" onClick={handleSearchSubmit}>Etsi</button>
         </div>
       </div><br /><br />

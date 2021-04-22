@@ -146,6 +146,7 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
     if (req.cookies.token) {
         res.clearCookie("token");
+        res.clearCookie("refreshToken");
         return res.status(200).json({ msg: 'Logging you out' });
     } else {
         return res.status(400).json({ msg: 'No user to log out!' });

@@ -1,10 +1,10 @@
 import './salepage.css';
-import Button from '@material-ui/core/Button';
-import CardActions from '@material-ui/core/CardActions';
-import CardHeader from '@material-ui/core/CardHeader';
+// import Button from '@material-ui/core/Button';
+// import CardActions from '@material-ui/core/CardActions';
+// import CardHeader from '@material-ui/core/CardHeader';
+// import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardMedia, CardContent, Typography } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {useParams, useHistory} from 'react-router-dom'
 import { useState, useEffect } from 'react';
@@ -32,7 +32,7 @@ const Salepage = () => {
         .catch(err => console.log(err));
     }
     getListings();
-  }, [])
+  })
 
 
   /*const tiers = [

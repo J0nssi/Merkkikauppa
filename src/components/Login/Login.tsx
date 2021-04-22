@@ -1,7 +1,7 @@
 import axios from "axios";
-import { ChangeEvent, MouseEvent, useState } from "react";
-import { useHistory } from "react-router";
-import React from 'react';
+import { ChangeEvent, MouseEvent, useState, useContext } from "react";
+import { useHistory, Redirect } from "react-router";
+import { userContext } from '../../userContext';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -51,13 +51,17 @@ const useStyles = makeStyles((theme) => ({
 axios.defaults.withCredentials = true;
 
 const Login = () => {
+
+    const history = useHistory();
+
+    let {user, setUser} = useContext(userContext);
+
     const classes = useStyles();
     const [state, setState] = useState({
         email: "",
         password: ""
     })
 
-    const history = useHistory();
 
     // Logintietojen tallennus tilaan
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -83,8 +87,9 @@ const Login = () => {
                     console.log(refreshResponse.data)
                 }).catch((error) => console.log("error occured"))
 
-                axios.get('/auth/is-logged-in').then((userRes) => {
+                axios.get('/auth/user').then((userRes) => {
                     console.log(userRes.data);
+                    setUser(userRes.data);
                     history.push('/');
                 }).catch((error) => {
                     console.log(error)
@@ -98,10 +103,12 @@ const Login = () => {
         })
     }
 
-
     const navigateToMain = () => {
         history.push('/');//navigoi painalluksesta etsivulle
-      }
+    }
+
+    // Jos käyttäjä on kirjautunut sisään, ohjataan hänet kirjautumissivulle
+    if (user) return (<Redirect to={"/"} />)
 
     return (
         <>

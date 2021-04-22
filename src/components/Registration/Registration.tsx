@@ -1,7 +1,6 @@
 import axios from "axios";
-import { ChangeEvent, MouseEvent, useState } from "react";
-import { useHistory } from "react-router";
-import React from 'react';
+import { ChangeEvent, MouseEvent, useContext, useState} from "react";
+import { useHistory, Redirect } from "react-router";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,8 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { CLIENT_RENEG_LIMIT } from "node:tls";
-import { createGlobalStyle } from "styled-components";
+import { userContext } from '../../userContext';
 
 
 
@@ -56,8 +54,10 @@ const useStyles = makeStyles((theme) => ({
 const Registration = () => {
 
     const history = useHistory();
-
     const classes = useStyles();
+
+    let {user} = useContext(userContext);
+
     const [state, setState] = useState({
         email: "",
         password: "",
@@ -65,6 +65,7 @@ const Registration = () => {
         phone_number: "",
         city: ""
     });
+
 
     // Rekisteröintitietojen tallennus tilaan
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -95,9 +96,14 @@ const Registration = () => {
             }
         })
     }
+
+    //navigoi painalluksesta etsivulle
     const navigateToMain = () => {
-        history.push('/');//navigoi painalluksesta etsivulle
-      }
+        history.push('/');
+    }
+
+    // Jos käyttäjä on kirjautunut sisään, ohjataan hänet etusivulle
+    if (user) return (<Redirect to={"/"} />)
 
     return (
         <>
