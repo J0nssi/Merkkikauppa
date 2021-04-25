@@ -73,8 +73,8 @@ const Startpage = () => {
           <h1>MERKKIKAUPPA</h1>
           <img src='/MerkkikauppaW.png' alt="MK" width="100px" height="100px"></img>
         </a>
-        <div style={{marginTop: "auto",marginBottom: "1.7rem", marginRight: "1rem"}}>
-            {user && (<span>Kirjautunut:<br/> {user.name}<br/></span>)}
+        <div style={{marginTop: "auto",marginBottom: "1.7rem", marginRight: "1rem", fontFamily: "verdana"}}>
+            {user && (<span>Kirjautunut:<br/><strong>{user.name}</strong><br/></span>)}
             <input placeholder="Hae merkkejä" type="text" onChange={handleSearchChange}/>
             <button type="submit" onClick={handleSearchSubmit}>Etsi</button>
         </div>
