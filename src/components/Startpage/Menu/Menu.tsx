@@ -14,13 +14,14 @@ const Menu = () => {
   const history = useHistory();
   const navigateToRegister = () => history.push('/rekisteroidy');//eg.history.push('/login');
   const navigateToLogin = () => history.push('/kirjaudu');//eg.history.push('/login');
+  const navigateToProfile = () => history.push('/profiili');
 
   return (
     <div ref={node}>
       <StyledMenu open={open}>
         <StyledLink onClick={navigateToRegister}>Rekisteröidy</StyledLink>
         <StyledLink onClick={navigateToLogin}>Kirjaudu sisään</StyledLink>
-        <StyledLink onClick={() => close()}>Profiili</StyledLink>
+        <StyledLink onClick={navigateToProfile}>Profiili</StyledLink>
       </StyledMenu>
       <Hamburger open={open} setOpen={setOpen} />
     </div>
