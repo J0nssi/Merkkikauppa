@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+- dev
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -16,6 +16,25 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm run installDependencies
+    npm install
     npm run build
   displayName: 'npm install and build'
+  env:
+    "MONGODB_USER": $(MONGODB_USER)
+    "MONGODB_PASSWORD": $(MONGODB_PASSWORD)
+    "MONGODB_DB_NAME": $(MONGODB_DB_NAME)
+    "JWT_SECRET": $(JWT_SECRET)
+
+- task: Docker@2
+  inputs:
+    command: 'build'
+    Dockerfile: '**/Dockerfile'
+  displayName: 'Docker build'
+
+- task: ado-discord-webhook@1
+  inputs:
+    channelId: '801845696063602688'
+    webhookKey: 'kkXqNAjTZ0bp2M87f3ks6FTWX_KKDaXDFSkrB2FX9-8CK8GkCun7QI6NEKfjhT1bk5WO'
+    messageType: 'content'
+    content: 'Pipelines build complete: Result $(Agent.JobStatus)'
+  displayName: 'Discord Webhook'
