@@ -27,6 +27,7 @@ export const StyledLink = styled.a`
   font-size: 2rem;
   color: ${colors.white};
   text-decoration: none;
+  cursor: pointer;
 
   :hover {
     color: ${colors.white};
