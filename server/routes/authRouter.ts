@@ -12,6 +12,7 @@ const router = Router();
 // GET
 router.get('/user', async (req, res) => {
     passport.authenticate("jwt", { session: false }, (err: CallbackError, userMatch: IUser | null, message: object) => {
+        console.log(userMatch)
         if (userMatch) {
             let resUser = {
                 id: userMatch.id,
