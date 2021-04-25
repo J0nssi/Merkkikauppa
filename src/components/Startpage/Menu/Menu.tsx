@@ -18,13 +18,14 @@ const Menu = () => {
 
   useOnClickOutside(node, () => setOpen(false));
   const history = useHistory();
-  const navigateToRegister = () => history.push('/rekisteroidy');//eg.history.push('/login');
-  const navigateToLogin = () => history.push('/kirjaudu');//eg.history.push('/login');
-  const navigateToProfile = () => history.push('/profiili');//eg.history.push('/login');
+  const navigateToRegister = () => history.push('/rekisteroidy');
+  const navigateToLogin = () => history.push('/kirjaudu');
+  const navigateToProfile = () => history.push('/profiili');
   const signOut = () => {
     axios.post('/auth/logout');
     setUser(null);
   };
+  const navigateToAddListing = () => history.push('/myynti/lisaa');
 
   return (
     <div ref={node}>
@@ -36,8 +37,9 @@ const Menu = () => {
           </> 
           :
           <>
-             <StyledLink onClick={signOut}>Kirjaudu Ulos</StyledLink>
-             <StyledLink onClick={navigateToProfile}>Profiili</StyledLink>
+            <StyledLink onClick={navigateToProfile}>Profiili</StyledLink>
+            <StyledLink onClick={navigateToAddListing}>Lisää myynti-ilmoitus</StyledLink>
+            <StyledLink onClick={signOut}>Kirjaudu Ulos</StyledLink>
           </>
         }
 
