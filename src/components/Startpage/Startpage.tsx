@@ -3,7 +3,7 @@ import { useState, useEffect, useContext, ChangeEvent, MouseEvent } from 'react'
 import { IListing } from '../../../server/models/listingModel';
 import useStyles from './gridstyles';
 import './startpage.css';
-import { Grid } from '@material-ui/core';
+import { Button, Grid, TextField } from '@material-ui/core';
 import { Card, CardMedia, CardContent, Typography } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 import Container from '@material-ui/core/Container';
@@ -74,9 +74,13 @@ const Startpage = () => {
           <img src='/MerkkikauppaW.png' alt="MK" width="100px" height="100px"></img>
         </a>
         <div style={{marginTop: "auto",marginBottom: "1.7rem", marginRight: "1rem", fontFamily: "verdana"}}>
+          <form className={classes.root} noValidate autoComplete="off">
             {user && (<span>Kirjautunut:<br/><strong>{user.name}</strong><br/></span>)}
-            <input placeholder="Hae merkkejä" type="text" onChange={handleSearchChange}/>
-            <button type="submit" onClick={handleSearchSubmit}>Etsi</button>
+            <TextField id="hae" label="Hae merkkejä" variant="filled" onChange={handleSearchChange}/>
+            <Button variant="contained" color="primary" onClick={handleSearchSubmit}>
+              Hae
+            </Button>
+            </form>
         </div>
       </div><br /><br />
       <main>
