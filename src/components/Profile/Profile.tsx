@@ -105,15 +105,14 @@ const Profilepage = () => {
           </Typography>
         </CardContent>
     </Card>
+    <br/>
     <Grid container justify="center" spacing={5}>
           {listings.map(listing => {
               //Grid layout myytäville tuotteille
               //CardMedia itse kuva merkille
-              return <Grid item key={listing.id} xs={12} sm={6} md={4} lg={3}>
+              return <Grid item key={listing.id} xs={4} sm={3} md={2} lg={1}>
                 <Card className={classes.root}>
-
                     <CardMedia className={classes.media} image={listing.urls[0]} title={listing.title} />
-
                     <CardContent>
                       <div className={classes.cardContent}>
                         <Typography variant="h5" gutterBottom>
@@ -127,7 +126,6 @@ const Profilepage = () => {
                       <Typography variant="body2" color="textSecondary">Merkkejä jäljellä: {listing.item_count}</Typography>
                       <Typography variant="body2" color="textSecondary">{listing.seller.name}</Typography>
                     </CardContent>
-
                 </Card>
               </Grid>
             

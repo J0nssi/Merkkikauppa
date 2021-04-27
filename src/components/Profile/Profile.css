@@ -10,3 +10,19 @@
     text-align: center;
     padding-top: 10px;
 }
+
+@import url(https://fonts.googleapis.com/css?family=Krona+One);
+.top{
+    color:white;
+    justify-content: center;
+    display: flex;
+    background-color: rgb(158, 192, 243);
+    padding: 10px;
+    font-family: 'Krona One';
+    width: 100%;
+    font-size: larger;
+    gap: 10px;
+    box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 3px 5px 2px rgba(255, 0, 51, 0.3);
+    background: linear-gradient(45deg, #6ebeff 30%, #0e62ff 90%);
+  }
