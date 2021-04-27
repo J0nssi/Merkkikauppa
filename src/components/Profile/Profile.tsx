@@ -78,7 +78,18 @@ const Profilepage = () => {
         getListings();
       }, [])
 
+      const navigateToMain = () => {
+      history.push('/');//navigoi painalluksesta etsivulle
+  }
+
     return(
+      <>
+      <div className="top"> 
+        <a onClick={() => navigateToMain()} style={{cursor:'pointer'}}>  
+          <h1>MERKKIKAUPPA</h1>
+        </a>
+          <img src='/MerkkikauppaW.png' alt="MK" width="100px" height="100px"></img>
+        </div><br/><br/>
       <div className={classes.paper}>
       <Card className={classes.root}>
         <CardMedia
@@ -132,6 +143,7 @@ const Profilepage = () => {
           })}
         </Grid>
     </div>
+    </>
     )
 }
 

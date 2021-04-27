@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useHistory } from "react-router-dom";
 
 
 
@@ -110,6 +111,10 @@ const AddListing = () => {
         tester.src=urlState;
     }
 
+    const history = useHistory();
+    const navigateToMain = () => {
+        history.push('/');//navigoi painalluksesta etsivulle
+      }
 
     // Jos käyttäjätietoja ei ole vielä ehditty hakea, ei näytetä mitään.
     if(user === undefined) return <></>
@@ -134,8 +139,11 @@ const AddListing = () => {
                 <textarea placeholder="Kuvaus" id="description" rows={3} onChange={handleChange} />
                 <input placeholder="Hinta" id="price" type="number" min="0" onChange={handleChange} style={{width: "30%"}}/>
                 <input placeholder="Määrä" id="item_count" type="number" min="1" onChange={handleChange} style={{width: "30%"}}/>
-    <button type="submit" onClick={handleSubmitClick}>Lisää</button>*/}
-
+                <button type="submit" onClick={handleSubmitClick}>Lisää</button>*/}
+                        <a onClick={() => navigateToMain()} style={{ cursor: 'pointer', display: "flex"}}>
+                        <h1>MERKKIKAUPPA</h1>
+                        <img src='/MerkkikauppaW.png' alt="MK" width="100px" height="100px"></img>
+                        </a>
                 <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
@@ -232,7 +240,6 @@ const AddListing = () => {
                 </div>
 
             </Container>
-                
         </>
     )
 }
