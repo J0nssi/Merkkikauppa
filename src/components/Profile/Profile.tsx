@@ -109,7 +109,7 @@ const Profilepage = () => {
           {listings.map(listing => {
               //Grid layout myytäville tuotteille
               //CardMedia itse kuva merkille
-              <Grid item key={listing.id} xs={12} sm={6} md={4} lg={3}>
+              return <Grid item key={listing.id} xs={12} sm={6} md={4} lg={3}>
                 <Card className={classes.root}>
 
                     <CardMedia className={classes.media} image={listing.urls[0]} title={listing.title} />

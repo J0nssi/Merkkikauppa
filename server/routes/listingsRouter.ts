@@ -28,12 +28,12 @@ listingsRouter.route('/u/:userId').get((req, res) => {
 
 listingsRouter.route('/myListings').get((req, res) => {
     passport.authenticate("jwt", { session: false }, (err: CallbackError, userMatch: IUser | null, message: object) => {
-        if (userMatch) {
-            userMatch.populate('listings')
-            let userListings = userMatch.listings;
-            return res.status(200).json(userListings);
+        if (err) {
+            console.log(err);
         } else {
-            return res.status(401).json(message);
+            Listing.find({seller: userMatch?._id as any}).populate('seller').exec((err, listings) =>{
+                return res.json(listings);
+            })
         }
     })(req, res);
 })
