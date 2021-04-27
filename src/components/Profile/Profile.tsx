@@ -11,6 +11,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { IListing } from '../../../server/models/listingModel';
+import { Grid } from '@material-ui/core';
+
 
 
 const Profilepage = () => {
@@ -24,9 +27,24 @@ const Profilepage = () => {
         flexDirection: 'column',
         alignItems: 'center',
     },
-      root: {
-        maxWidth: 500,
-      },
+    root: {
+      maxWidth: '100%'
+  },
+  media: {
+      height: 0,
+      paddingTop: '70%', //16:9
+  },
+  cardActions: {
+      display: 'flex',
+      justifyContent: 'flex-end'
+  },
+  cardContent: {
+      display: 'flex',
+      justifyContent: 'space-between'
+  },
+  footer: {
+      paddingTop: '70%',
+  }
       
     });
     const classes = useStyles();
@@ -43,6 +61,21 @@ const Profilepage = () => {
             history.push('/');
         }
         getUser();
+      }, [])
+
+      const [listings, setListings] = useState<Array<IListing>>([])
+
+      useEffect(() => {
+        const getListings = async () => {
+          console.log('/listings/myListings')
+          return await axios.get<Array<IListing>>(`/listings/myListings`)
+            .then(response => {
+              console.log(response.data)
+              setListings(response.data);
+            })
+            .catch(err => console.log(err));
+        }
+        getListings();
       }, [])
 
     return(
@@ -72,6 +105,34 @@ const Profilepage = () => {
           </Typography>
         </CardContent>
     </Card>
+    <Grid container justify="center" spacing={5}>
+          {listings.map(listing => {
+              //Grid layout myytäville tuotteille
+              //CardMedia itse kuva merkille
+              <Grid item key={listing.id} xs={12} sm={6} md={4} lg={3}>
+                <Card className={classes.root}>
+
+                    <CardMedia className={classes.media} image={listing.urls[0]} title={listing.title} />
+
+                    <CardContent>
+                      <div className={classes.cardContent}>
+                        <Typography variant="h5" gutterBottom>
+                          {listing.title}
+                        </Typography>
+                        <Typography variant="h5">
+                          {listing.price} €
+                        </Typography>
+                      </div>
+                      <Typography variant="body2" color="textSecondary">{listing.description}</Typography>
+                      <Typography variant="body2" color="textSecondary">Merkkejä jäljellä: {listing.item_count}</Typography>
+                      <Typography variant="body2" color="textSecondary">{listing.seller.name}</Typography>
+                    </CardContent>
+
+                </Card>
+              </Grid>
+            
+          })}
+        </Grid>
     </div>
     )
 }
