@@ -164,7 +164,7 @@ const Login = () => {
                         </Button>
                         <Grid container justify="flex-end">
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link href="/rekisteroidy" variant="body2">
                                     {"Eikö sinulla ole käyttäjää? Rekisteröidy"}
                                 </Link>
                             </Grid>

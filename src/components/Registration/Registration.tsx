@@ -194,7 +194,7 @@ const Registration = () => {
                         </Button>
                         <Grid container justify="flex-end">
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link href="/kirjaudu" variant="body2">
                                     Onko sinulla jo käyttäjä? Kirjaudu sisään
                                 </Link>
                             </Grid>

@@ -35,24 +35,6 @@ const Salepage = () => {
   })
 
 
-  /*const tiers = [
-    {
-      title: 'MERKKINIMI PLACEHOLDER',
-      price: '5e',
-      description: 'DESCRIPTION',
-      seller: 'ESSI ESIMERKKI',
-      item_count: 0,
-    },
-  ];
-
-  /*myyntiData.map(listing => {
-    tiers[0].title = listing.title,
-    tiers[0].price = listing.price.toString();
-    tiers[0].description = listing.description,
-    tiers[0].seller = listing.seller.name,
-    tiers[0].item_count = listing.item_count;
-  });*/
-
   const history = useHistory();
   const navigateToMain = () => {
     history.push('/');//navigoi painalluksesta etsivulle
@@ -80,7 +62,6 @@ const Salepage = () => {
                         {myyntiData?.price} €
                       </Typography>
                     </div>
-                    <Typography variant="body2" color="textSecondary">{myyntiData?.description}</Typography>
                     <Typography variant="body2" color="textSecondary">Merkkejä jäljellä: {myyntiData?.item_count}</Typography>
                     <Typography variant="body2" color="textSecondary">{myyntiData?.seller.name}</Typography>
                     <Typography variant="body2" color="textSecondary">{myyntiData?.seller.email}</Typography>
@@ -88,6 +69,14 @@ const Salepage = () => {
                   </CardContent>
                 </Card>
               </Grid>
+        </Grid>
+        <Grid container justify="center" spacing={5}>
+          <Grid item key={myyntiData?.id} xs={12} sm={6} md={4} lg={3}>
+            <Card className={classes.root}>
+            <Typography variant="h5">{myyntiData?.description}</Typography>
+            <br></br>
+            </Card>
+          </Grid>
         </Grid>
       </main>
       <footer className={classes.footer}>
